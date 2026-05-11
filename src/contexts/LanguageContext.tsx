@@ -13,7 +13,24 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
 );
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-    const [language, setLanguage] = useState("en");
+    const [language, setLanguage] = useState(() => {
+        if (typeof window === "undefined") return "en";
+
+        const storedLanguage = localStorage.getItem("language");
+        if (storedLanguage) return storedLanguage;
+
+        const cookies = document.cookie.split(";");
+        const localeCookie = cookies.find((c) =>
+            c.trim().startsWith("NEXT_LOCALE=")
+        );
+
+        if (localeCookie) {
+            return localeCookie.split("=")[1];
+        }
+
+        return navigator.language.startsWith("pt") ? "pt-BR" : "en";
+    });
+
     const router = useRouter();
 
     const handleSetLanguage = (newLang: string) => {
@@ -27,31 +44,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     };
 
     useEffect(() => {
-        const storedLanguage = localStorage.getItem("language");
-        if (storedLanguage) {
-            setLanguage(storedLanguage);
-            return;
-        }
-
-        const cookies = document.cookie.split(";");
-        const localeCookie = cookies.find((c) =>
-            c.trim().startsWith("NEXT_LOCALE=")
-        );
-        if (localeCookie) {
-            const cookieValue = localeCookie.split("=")[1];
-            setLanguage(cookieValue);
-            localStorage.setItem("language", cookieValue);
-            return;
-        }
-
-        const browserLanguage = navigator.language;
-        const defaultLanguage = browserLanguage.startsWith("pt")
-            ? "pt-BR"
-            : "en";
-        setLanguage(defaultLanguage);
-        localStorage.setItem("language", defaultLanguage);
-        document.cookie = `NEXT_LOCALE=${defaultLanguage};path=/;max-age=${60 * 60 * 24 * 365}`;
-    }, []);
+        localStorage.setItem("language", language);
+        document.cookie = `NEXT_LOCALE=${language};path=/;max-age=${60 * 60 * 24 * 365}`;
+    }, [language]);
 
     return (
         <LanguageContext.Provider

@@ -8,10 +8,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { lang } = await params;
     return {
-        title:
-            lang === "pt-BR"
-                ? "Raniery | Portfólio"
-                : "Raniery | Portfolio",
+        title: lang === "pt-BR" ? "Raniery | Portfólio" : "Raniery | Portfolio",
     };
 }
 

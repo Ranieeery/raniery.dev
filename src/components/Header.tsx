@@ -8,10 +8,15 @@ import { ptBR } from "@/locales/pt-BR";
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isDarkMode, setIsDarkMode] = useState(false);
     const [activeSection, setActiveSection] = useState("home");
     const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
     const { language, setLanguage } = useLanguage();
+
+    const [isDarkMode, setIsDarkMode] = useState(() => {
+        if (typeof window === "undefined") return false;
+
+        return localStorage.getItem("theme") === "dark";
+    });
 
     const texts = language === "pt-BR" ? ptBR : en;
 
@@ -56,12 +61,10 @@ export default function Header() {
     }, []);
 
     useEffect(() => {
-        const theme = localStorage.getItem("theme");
-        if (theme === "dark") {
-            document.body.classList.add("dark-theme");
-            setIsDarkMode(true);
-        }
-    }, []);
+        document.body.classList.toggle("dark-theme", isDarkMode);
+
+        localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+    }, [isDarkMode]);
 
     return (
         <header className="header" id="header">
@@ -132,14 +135,7 @@ export default function Header() {
                 <div className="nav__btns">
                     <i
                         className={`uil ${isDarkMode ? "uil-sun" : "uil-moon"} change-theme`}
-                        onClick={() => {
-                            setIsDarkMode(!isDarkMode);
-                            document.body.classList.toggle("dark-theme");
-                            localStorage.setItem(
-                                "theme",
-                                isDarkMode ? "light" : "dark"
-                            );
-                        }}
+                        onClick={() => setIsDarkMode(!isDarkMode)}
                     ></i>
 
                     <div

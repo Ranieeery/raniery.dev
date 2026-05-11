@@ -55,11 +55,11 @@ const isSimpleIcon = (icon: unknown): icon is SimpleIcon => {
     const iconLike = icon as IconLike;
     return Boolean(
         iconLike &&
-            typeof iconLike === "object" &&
-            "path" in iconLike &&
-            "hex" in iconLike &&
-            "title" in iconLike &&
-            "slug" in iconLike
+        typeof iconLike === "object" &&
+        "path" in iconLike &&
+        "hex" in iconLike &&
+        "title" in iconLike &&
+        "slug" in iconLike
     );
 };
 
