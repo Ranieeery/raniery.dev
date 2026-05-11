@@ -31,18 +31,6 @@ export default function RootLayout({
                     crossOrigin="anonymous"
                 />
                 <link
-                    rel="preconnect"
-                    href="https://unicons.iconscout.com"
-                    crossOrigin="anonymous"
-                />
-                <link
-                    rel="preload"
-                    as="font"
-                    href="https://unicons.iconscout.com/release/v4.0.0/fonts/unicons-regular.woff2"
-                    type="font/woff2"
-                    crossOrigin="anonymous"
-                />
-                <link
                     rel="preload"
                     as="style"
                     href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
