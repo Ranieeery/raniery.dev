@@ -148,7 +148,7 @@ const createSkillsData = (texts: typeof en): SkillCategory[] => [
             { name: "C", icon: SimpleIcons.siC },
             { name: "C++", icon: SimpleIcons.siCplusplus },
             { name: "HTML", icon: SimpleIcons.siHtml5 },
-            { name: "CSS", icon: SimpleIcons.siCss3 },
+            { name: "CSS", icon: SimpleIcons.siCss },
         ],
     },
     {
@@ -187,7 +187,8 @@ const createSkillsData = (texts: typeof en): SkillCategory[] => [
         category: texts.skills.categories[3].category,
         icon: ["uil", "uil-cloud-data-connection", "skills__icon"],
         skills: [
-            { name: "AWS", icon: SimpleIcons.siAmazonwebservices },
+            //TODO: add icons for AWS
+            { name: "AWS", icon: getIcon("aws") },
             { name: "Docker", icon: SimpleIcons.siDocker },
             { name: "Git", icon: SimpleIcons.siGit },
             { name: "GitHub", icon: SimpleIcons.siGithub },
