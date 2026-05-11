@@ -13,14 +13,17 @@ export default function Home() {
         {
             href: "https://www.linkedin.com/in/ranierygoulart/",
             icon: "uil-linkedin",
+            label: "LinkedIn profile",
         },
         {
             href: "https://github.com/Ranieeery",
             icon: "uil-github",
+            label: "GitHub profile",
         },
         {
             href: "https://www.instagram.com/ranierygoulart/",
             icon: "uil-instagram",
+            label: "Instagram profile",
         },
     ];
 
@@ -35,7 +38,9 @@ export default function Home() {
                                 href={link.href}
                                 className="home__social-icon"
                                 target="_blank"
-                                rel="noreferrer"
+                                rel="noreferrer noopener"
+                                aria-label={link.label}
+                                title={link.label}
                             >
                                 <i className={`uil ${link.icon}`}></i>
                             </a>

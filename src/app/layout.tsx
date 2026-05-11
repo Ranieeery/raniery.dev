@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import Script from "next/script";
 import "@/styles/globals.min.css";
 
 const poppins = Poppins({
@@ -20,7 +21,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html>
+        <html lang="en" suppressHydrationWarning>
             <head>
                 <link
                     rel="stylesheet"
@@ -46,11 +47,12 @@ export default function RootLayout({
                 <link rel="manifest" href="/icons/site.webmanifest" />
             </head>
             <body className={poppins.className} suppressHydrationWarning>
-                <script
-                    dangerouslySetInnerHTML={{
-                        __html: `(function(){try{var t=localStorage.getItem("theme");var dark=t?t==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;document.body.classList.toggle("dark-theme",dark);}catch(e){}})();`,
-                    }}
-                />
+                <Script id="set-html-lang" strategy="beforeInteractive">
+                    {`(function(){try{var p=location.pathname;document.documentElement.lang=p.indexOf('/pt-BR')===0?'pt-BR':'en';}catch(e){}})();`}
+                </Script>
+                <Script id="set-theme-class" strategy="beforeInteractive">
+                    {`(function(){try{var t=localStorage.getItem("theme");var dark=t?t==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;document.body.classList.toggle("dark-theme",dark);}catch(e){}})();`}
+                </Script>
                 <LanguageProvider>{children}</LanguageProvider>
                 <SpeedInsights />
             </body>

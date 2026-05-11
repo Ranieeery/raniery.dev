@@ -12,6 +12,7 @@ interface FooterLink {
 interface SocialLink {
     href: string;
     icon: string;
+    label: string;
 }
 
 export default function Footer() {
@@ -29,14 +30,17 @@ export default function Footer() {
         {
             href: "https://www.linkedin.com/in/ranierygoulart/",
             icon: "uil uil-linkedin",
+            label: "LinkedIn profile",
         },
         {
             href: "https://github.com/Ranieeery",
             icon: "uil uil-github",
+            label: "GitHub profile",
         },
         {
             href: "https://www.instagram.com/ranierygoulart/",
             icon: "uil uil-instagram",
+            label: "Instagram profile",
         },
     ];
 
@@ -45,9 +49,9 @@ export default function Footer() {
             <div className="footer__bg">
                 <div className="footer__container container grid">
                     <div className="align--text">
-                        <h1 className="footer__title">
+                        <h2 className="footer__title">
                             &#60;/{texts.footer.title}&#62;
-                        </h1>
+                        </h2>
                         <span className="footer__subtitle">
                             {texts.footer.subtitle}
                         </span>
@@ -69,8 +73,10 @@ export default function Footer() {
                                 key={index}
                                 href={social.href}
                                 target="_blank"
-                                rel="noreferrer"
+                                rel="noreferrer noopener"
                                 className="footer__social"
+                                aria-label={social.label}
+                                title={social.label}
                             >
                                 <i className={social.icon}></i>
                             </a>

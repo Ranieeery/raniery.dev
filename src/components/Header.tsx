@@ -132,6 +132,7 @@ export default function Header() {
 
                     <i
                         className="uil uil-times nav__close"
+                        aria-label="Close navigation menu"
                         onClick={() => setIsMenuOpen(false)}
                     ></i>
                 </div>
@@ -140,14 +141,21 @@ export default function Header() {
                     <i
                         className={`uil ${isDarkMode ? "uil-sun" : "uil-moon"} change-theme`}
                         onClick={() => setIsDarkMode(!isDarkMode)}
+                        aria-label={
+                            isDarkMode
+                                ? "Switch to light mode"
+                                : "Switch to dark mode"
+                        }
                     ></i>
 
-                    <div
+                    <button
+                        type="button"
                         className="nav__toggle"
+                        aria-label="Open navigation menu"
                         onClick={() => setIsMenuOpen(true)}
                     >
                         <i className="uil uil-apps"></i>
-                    </div>
+                    </button>
                 </div>
             </nav>
         </header>
