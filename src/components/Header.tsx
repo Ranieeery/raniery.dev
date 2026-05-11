@@ -150,23 +150,45 @@ export default function Header() {
                         </div>
                     </ul>
 
-                    <i
-                        className="uil uil-times nav__close"
-                        aria-label="Close navigation menu"
+                    <button
+                        type="button"
                         onClick={() => setIsMenuOpen(false)}
-                    ></i>
+                        aria-label="Close navigation menu"
+                        style={{
+                            background: "none",
+                            border: "none",
+                            cursor: "pointer",
+                            padding: 0,
+                            display: "contents",
+                        }}
+                    >
+                        <i className="uil uil-times nav__close"></i>
+                    </button>
                 </div>
 
                 <div className="nav__btns">
-                    <i
-                        className={`uil ${isDarkMode ? "uil-sun" : "uil-moon"} change-theme`}
+                    <button
+                        type="button"
                         onClick={() => setIsDarkMode(!isDarkMode)}
                         aria-label={
                             isDarkMode
                                 ? "Switch to light mode"
                                 : "Switch to dark mode"
                         }
-                    ></i>
+                        style={{
+                            background: "none",
+                            border: "none",
+                            cursor: "pointer",
+                            padding: 0,
+                            display: "contents",
+                        }}
+                    >
+                        <i
+                            className={`uil ${
+                                isDarkMode ? "uil-sun" : "uil-moon"
+                            } change-theme`}
+                        ></i>
+                    </button>
 
                     <button
                         type="button"
