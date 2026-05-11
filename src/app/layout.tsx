@@ -8,6 +8,7 @@ import "@/styles/globals.min.css";
 const poppins = Poppins({
     subsets: ["latin"],
     weight: ["400", "500", "600"],
+    display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -23,6 +24,11 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <head>
+                <link
+                    rel="preload"
+                    as="style"
+                    href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+                />
                 <link
                     rel="stylesheet"
                     href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"

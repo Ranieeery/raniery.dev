@@ -1,10 +1,21 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { en } from "@/locales/en";
 import { ptBR } from "@/locales/pt-BR";
+
+const debounce = <T extends (...args: unknown[]) => void>(
+    fn: T,
+    delay: number
+): ((...args: Parameters<T>) => void) => {
+    let timeoutId: ReturnType<typeof setTimeout>;
+    return (...args: Parameters<T>) => {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => fn(...args), delay);
+    };
+};
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,6 +25,9 @@ export default function Header() {
     const { language, setLanguage } = useLanguage();
 
     const [isDarkMode, setIsDarkMode] = useState(false);
+    const debouncedScrollRef = useRef<((...args: unknown[]) => void) | null>(
+        null
+    );
 
     const texts = language === "pt-BR" ? ptBR : en;
 
@@ -35,7 +49,7 @@ export default function Header() {
     };
 
     useEffect(() => {
-        const handleScroll = () => {
+        const updateActiveSection = () => {
             const sections = document.querySelectorAll("section[id]");
             const scrollY = window.scrollY;
 
@@ -53,7 +67,13 @@ export default function Header() {
             });
         };
 
-        window.addEventListener("scroll", handleScroll);
+        debouncedScrollRef.current = debounce(updateActiveSection, 100);
+
+        const handleScroll = () => {
+            debouncedScrollRef.current?.();
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 

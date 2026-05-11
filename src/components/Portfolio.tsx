@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, EffectCoverflow } from "swiper/modules";
@@ -10,6 +11,11 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
+
+const PortfolioModal = dynamic(() => import("./PortfolioModal"), {
+    ssr: false,
+    loading: () => null,
+});
 
 export default function Portfolio() {
     const [activeModal, setActiveModal] = useState<number | null>(null);
@@ -23,6 +29,13 @@ export default function Portfolio() {
             <span className="section__subtitle">
                 {texts.portfolio.subtitle}
             </span>
+
+            <Suspense fallback={null}>
+                <PortfolioModal
+                    activeModal={activeModal}
+                    onClose={() => setActiveModal(null)}
+                />
+            </Suspense>
 
             <div className="portfolio__container container">
                 <Swiper
@@ -120,55 +133,6 @@ export default function Portfolio() {
                     </div>
                 </Swiper>
             </div>
-
-            {Object.values(texts.portfolio.projects).map((item, index) => (
-                <div
-                    key={index}
-                    className={`services__modal ${
-                        activeModal === index ? "active-modal" : ""
-                    }`}
-                >
-                    <div className="services__modal-content">
-                        <h4
-                            className="services__modal-title"
-                            dangerouslySetInnerHTML={{
-                                __html: item.modal.title,
-                            }}
-                        />
-                        <p className="services__modal-description">
-                            {item.modal.description}
-                        </p>{" "}
-                        <br />
-                        <i
-                            className="uil uil-times services__modal-close"
-                            onClick={() => setActiveModal(null)}
-                        />
-                        <ul className="services__modal-services grid">
-                            {item.modal.details.map((detail, detailIndex) => (
-                                <li
-                                    key={detailIndex}
-                                    className="services__modal-service"
-                                >
-                                    <i className="uil uil-check-circle services__modal-icon" />
-                                    <p>{detail}</p>
-                                </li>
-                            ))}
-                        </ul>
-                        <br />
-                        <span className="button button--flex button--small button--link">
-                            <a
-                                href={item.link}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="services__modal-button"
-                            >
-                                {texts.portfolio.send}
-                            </a>
-                            <i className="uil uil-arrow-right button__icon" />
-                        </span>
-                    </div>
-                </div>
-            ))}
         </section>
     );
 }
