@@ -10,13 +10,10 @@ export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState("home");
     const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
+    const [isThemeReady, setIsThemeReady] = useState(false);
     const { language, setLanguage } = useLanguage();
 
-    const [isDarkMode, setIsDarkMode] = useState(() => {
-        if (typeof document === "undefined") return false;
-
-        return document.body.classList.contains("dark-theme");
-    });
+    const [isDarkMode, setIsDarkMode] = useState(false);
 
     const texts = language === "pt-BR" ? ptBR : en;
 
@@ -61,10 +58,17 @@ export default function Header() {
     }, []);
 
     useEffect(() => {
+        setIsDarkMode(document.body.classList.contains("dark-theme"));
+        setIsThemeReady(true);
+    }, []);
+
+    useEffect(() => {
+        if (!isThemeReady) return;
+
         document.body.classList.toggle("dark-theme", isDarkMode);
 
         localStorage.setItem("theme", isDarkMode ? "dark" : "light");
-    }, [isDarkMode]);
+    }, [isDarkMode, isThemeReady]);
 
     return (
         <header className="header" id="header">

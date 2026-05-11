@@ -1,6 +1,6 @@
-import { NextResponse, NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
     const { pathname } = request.nextUrl;
 
     if (pathname.startsWith("/_next") || pathname.includes(".")) {
@@ -30,7 +30,7 @@ export function middleware(request: NextRequest) {
         if (!storedLanguage) {
             response.cookies.set("NEXT_LOCALE", locale, {
                 path: "/",
-                maxAge: 60 * 60 * 24 * 365, // 1 ano
+                maxAge: 60 * 60 * 24 * 365,
             });
         }
 
