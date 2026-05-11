@@ -13,9 +13,9 @@ export default function Header() {
     const { language, setLanguage } = useLanguage();
 
     const [isDarkMode, setIsDarkMode] = useState(() => {
-        if (typeof window === "undefined") return false;
+        if (typeof document === "undefined") return false;
 
-        return localStorage.getItem("theme") === "dark";
+        return document.body.classList.contains("dark-theme");
     });
 
     const texts = language === "pt-BR" ? ptBR : en;

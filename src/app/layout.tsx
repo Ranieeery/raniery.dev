@@ -45,7 +45,12 @@ export default function RootLayout({
                 />
                 <link rel="manifest" href="/icons/site.webmanifest" />
             </head>
-            <body className={poppins.className}>
+            <body className={poppins.className} suppressHydrationWarning>
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `(function(){try{var t=localStorage.getItem("theme");var dark=t?t==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;document.body.classList.toggle("dark-theme",dark);}catch(e){}})();`,
+                    }}
+                />
                 <LanguageProvider>{children}</LanguageProvider>
                 <SpeedInsights />
             </body>
