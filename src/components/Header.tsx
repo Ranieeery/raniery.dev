@@ -112,13 +112,13 @@ export default function Header() {
           <ul className="nav__list grid">
             {menuItems.map((item) => (
               <li key={item.href} className="nav__item">
-                <Link
+                <a
                   href={item.href}
                   className={`nav__link ${activeSection === item.href.slice(1) ? "active-link" : ""}`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <i className={`uil ${item.icon} nav__icon`}></i> {item.text}
-                </Link>
+                </a>
               </li>
             ))}
             <div className="nav__lang">

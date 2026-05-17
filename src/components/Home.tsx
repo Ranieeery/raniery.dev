@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { en } from "@/locales/en";
 import { ptBR } from "@/locales/pt-BR";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -84,19 +83,19 @@ export default function Home() {
             <h1 className="home__title">{texts.home.title}</h1>
             <h3 className="home__subtitle">{texts.home.subtitle}</h3>
             <p className="home__description">{texts.home.social}</p>
-            <Link href="#contact" className="button button--flex">
+            <a href="#contact" className="button button--flex">
               {texts.home.contact}
               <i className="uil uil-message button__icon"></i>
-            </Link>
+            </a>
           </div>
         </div>
 
         <div className="home__scroll">
-          <Link href="#about" className="home__scroll-button button--flex">
+          <a href="#about" className="home__scroll-button button--flex">
             <i className="uil uil-mouse-alt home__scroll-mouse"></i>
             <span className="home__scroll-name">{texts.home.scroll}</span>
             <i className="uil uil-arrow-down home__scroll-arrow"></i>
-          </Link>
+          </a>
         </div>
       </div>
     </section>
