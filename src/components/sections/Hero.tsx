@@ -71,7 +71,7 @@ export function Hero({ locale, dict }: HeroProps) {
             <li className="inline-flex items-center gap-2">
               <span
                 aria-hidden
-                className="inline-block size-1.5 rounded-full bg-accent"
+                className="neon-dot inline-block size-1.5 rounded-full"
               />
               {t.current}
             </li>
