@@ -1,61 +1,38 @@
-# Personal Portfolio Website
+# raniery.dev
 
-A modern and responsive portfolio website built with Next.js and TypeScript, showcasing my projects and professional experience.
+Personal portfolio of Raniery Meireles Goulart, backend software engineer.
+Live at [raniery.dev](https://raniery.dev).
 
-## Features
+Built with Next.js 16, TypeScript and Tailwind CSS v4. Static, bilingual
+(`/pt` and `/en`), with light and dark themes.
 
-- Responsive design for all devices
-- Dark/Light theme support
-- Bilingual support (English/Portuguese)
-- Project showcase with interactive modal
-- Smooth animations and transitions
-- Contact form integration
-- SEO optimized
+## Getting started
 
-## Technologies
-
-- Next.js 14
-- TypeScript
-- React
-- Swiper
-- CSS3
-- Vercel Speed Insights
-- Google Fonts (Poppins)
-
-## Getting Started
-
-1. Install dependencies:
+Requires Node.js 20.9+.
 
 ```bash
 npm install
-```
-
-2. Run the development server:
-
-```bash
 npm run dev
 ```
 
-3. Open `http://localhost:3000` with your browser.
+| Script                 | What it does               |
+| ---------------------- | -------------------------- |
+| `npm run dev`          | Development server         |
+| `npm run build`        | Production build           |
+| `npm run start`        | Serve the production build |
+| `npm run lint`         | ESLint                     |
+| `npm run format`       | Format with Prettier       |
+| `npm run format:check` | Check formatting           |
 
-## Project Structure
+## Editing content
 
-```structure
-src/
-├── components/      # React components
-├── contexts/        # Context providers
-├── locales/        # Language files
-├── styles/         # Global styles
-└── app/            # Next.js pages
-```
+- **Text:** `src/i18n/dictionaries/pt.ts` and `en.ts`, which must have the same
+  keys.
+- **Shared data** (dates, links, tech stacks): `src/content/profile.ts`.
+- **Resumes:** `public/cv/`.
+- **Colors:** `src/app/globals.css`, mirrored in `src/lib/theme-colors.ts`.
 
-## Scripts
+## Contributing
 
-- `npm run dev`: Start the development server
-- `npm run build`: Build the production application
-- `npm run start`: Start the production server
-- `npm run lint`: Runs ESLint for code quality
-
-## Live Demo
-
-Visit [raniery.dev](https://raniery.dev/)
+Commits follow [Conventional Commits](https://www.conventionalcommits.org) and
+versions follow [SemVer](https://semver.org).
