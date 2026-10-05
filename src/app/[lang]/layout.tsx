@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
+import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { htmlLang, isLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
@@ -77,6 +78,7 @@ export default async function RootLayout({
           {dict.a11y.skipToContent}
         </a>
         {children}
+        <Analytics />
         <SpeedInsights />
       </body>
     </html>
