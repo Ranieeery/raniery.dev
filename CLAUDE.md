@@ -23,7 +23,11 @@ loading the production build in a browser.
   the owner reviews and commits.
 - When asked for a commit message, use Conventional Commits (`feat`, `fix`,
   `refactor`, `docs`, `chore`, `style`). Mark breaking changes with `!` and a
-  `BREAKING CHANGE:` footer. The version in `package.json` follows SemVer.
+  `BREAKING CHANGE:` footer.
+- Every change bumps the version in `package.json` (and `package-lock.json`)
+  following SemVer, matching the commit type: breaking change → major,
+  `feat` → minor, everything else → patch. Use
+  `npm version <major|minor|patch> --no-git-tag-version`.
 
 ## Architecture rules
 

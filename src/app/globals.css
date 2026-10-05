@@ -153,6 +153,18 @@
     margin-inline: 0.5rem;
     color: var(--border);
   }
+
+  /*
+   * The one deliberate exception to "no glow": the dot next to the current
+   * company gets a neon halo in the accent hue.
+   */
+  .neon-dot {
+    background-color: var(--accent-strong);
+    box-shadow:
+      0 0 2px 0.5px var(--accent),
+      0 0 6px 1px color-mix(in hsl, var(--accent) 80%, transparent),
+      0 0 12px 3px color-mix(in hsl, var(--accent) 45%, transparent);
+  }
 }
 
 /* Theme change: only animated while the toggle is running. */
@@ -201,6 +213,16 @@
 
   .hero-enter > :nth-child(4) {
     animation-delay: 240ms;
+  }
+
+  .neon-dot {
+    animation: neon-pulse 2.4s ease-in-out infinite;
+  }
+}
+
+@keyframes neon-pulse {
+  50% {
+    opacity: 0.65;
   }
 }
 
