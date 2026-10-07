@@ -101,7 +101,7 @@ export const pt: Dictionary = {
       },
       mnemo: {
         summary:
-          "Aplicação instalável de desktop para gerenciar e organizar a biblioteca de vídeos local do usuário, com recursos de inteligência artificial.",
+          "Aplicativo desktop para organizar e assistir uma biblioteca de vídeos local, navegando pela estrutura real de pastas, com progresso, tags e thumbnails.",
       },
       medicalClinic: {
         name: "API de Consultório Médico",
@@ -157,7 +157,7 @@ export const pt: Dictionary = {
   },
   contact: {
     title: "Contato",
-    lead: "Aberto a novas oportunidades e conversas. O caminho mais rápido é por e-mail.",
+    lead: "Se quiser entrar em contato, o caminho mais rápido é por e-mail.",
     emailLabel: "Enviar e-mail",
   },
   footer: { note: "Feito com Next.js." },
