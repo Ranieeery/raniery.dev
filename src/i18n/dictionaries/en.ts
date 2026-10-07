@@ -101,7 +101,7 @@ export const en: Dictionary = {
       },
       mnemo: {
         summary:
-          "Installable desktop application to manage and organize the user's local video library, with AI-powered features.",
+          "Desktop app to organize and watch a local video library, browsing the real folder structure, with progress, tags and thumbnails.",
       },
       medicalClinic: {
         name: "Medical Clinic API",
@@ -158,7 +158,7 @@ export const en: Dictionary = {
   },
   contact: {
     title: "Contact",
-    lead: "Open to new opportunities and conversations. Email is the fastest way to reach me.",
+    lead: "If you'd like to get in touch, email is the fastest way to reach me.",
     emailLabel: "Send an email",
   },
   footer: { note: "Built with Next.js." },
