@@ -1,14 +1,8 @@
 import type { Metadata } from "next";
-import { profile, siteUrl } from "@/content/profile";
 import { htmlLang, localeNames, locales } from "@/i18n/config";
-import { languageAlternates } from "@/lib/seo";
+import { buildRedirectMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: profile.shortName,
-  alternates: { languages: languageAlternates() },
-  robots: { index: false, follow: true },
-};
+export const metadata: Metadata = buildRedirectMetadata();
 
 /** Fallback links, only visible if the redirect script cannot run. */
 export default function RootRedirectPage() {
