@@ -4,6 +4,9 @@ export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = "pt";
 
+/** Locale whose link preview (Open Graph, Twitter card) `/` shows. */
+export const previewLocale: Locale = "pt";
+
 /** BCP 47 tags used for `<html lang>`, hreflang and Intl formatting. */
 export const htmlLang: Record<Locale, string> = {
   pt: "pt-BR",

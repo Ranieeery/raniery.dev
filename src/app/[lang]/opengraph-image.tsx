@@ -2,10 +2,11 @@ import { ImageResponse } from "next/og";
 import { profile, siteUrl } from "@/content/profile";
 import { defaultLocale, isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
+import { ogImage } from "@/lib/seo";
 import { themeColors } from "@/lib/theme-colors";
 
-export const size = { width: 1200, height: 630 };
-export const contentType = "image/png";
+export const size = ogImage.size;
+export const contentType = ogImage.contentType;
 
 export function generateImageMetadata({
   params,
@@ -14,7 +15,7 @@ export function generateImageMetadata({
 }) {
   const { lang } = params;
   const dict = getDictionary(isLocale(lang) ? lang : defaultLocale);
-  return [{ id: "og", alt: dict.meta.ogAlt, size, contentType }];
+  return [{ id: ogImage.id, alt: dict.meta.ogAlt, size, contentType }];
 }
 
 export default async function OpenGraphImage({
