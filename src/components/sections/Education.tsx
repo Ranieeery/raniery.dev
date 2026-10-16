@@ -3,6 +3,7 @@ import { certificates, education } from "@/content/profile";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import { formatPeriod } from "@/lib/format";
+import { revealDelay } from "@/lib/reveal";
 
 type EducationProps = { locale: Locale; dict: Dictionary; index: number };
 
@@ -13,10 +14,11 @@ export function Education({ locale, dict, index }: EducationProps) {
   return (
     <Section id="education" index={index} title={t.title}>
       <ol className="space-y-10">
-        {education.map((entry) => (
+        {education.map((entry, i) => (
           <li
             key={entry.id}
             data-reveal
+            style={revealDelay(i)}
             className="grid gap-2 lg:grid-cols-[11rem_1fr] lg:gap-8"
           >
             <p className="font-mono text-xs leading-7 text-subtle">

@@ -11,6 +11,8 @@ export const profile = {
   lastName: "Meireles Goulart",
   shortName: "Raniery Goulart",
   email: "raniery2003@hotmail.com",
+  /** Structured address for the Person JSON-LD; ISO 3166 country code. */
+  address: { locality: "Contagem", region: "MG", country: "BR" },
   /** Short stack summary shown on the Open Graph image. */
   focusStack: ["Java", "Go", "Spring Boot", "Kubernetes"],
   /** `id` doubles as the icon name. */
