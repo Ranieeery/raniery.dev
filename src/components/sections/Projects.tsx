@@ -4,7 +4,6 @@ import { Section } from "@/components/ui/Section";
 import { TechList } from "@/components/ui/TechList";
 import { projects } from "@/content/profile";
 import type { Dictionary } from "@/i18n/get-dictionary";
-import { revealDelay } from "@/lib/reveal";
 
 type ProjectsProps = { dict: Dictionary; index: number };
 
@@ -26,7 +25,6 @@ export function Projects({ dict, index }: ProjectsProps) {
             <li
               key={project.id}
               data-reveal
-              style={revealDelay(i)}
               className="group relative isolate grid grid-cols-[2.5rem_1fr_auto] gap-x-4 border-b border-line py-8 before:absolute before:inset-y-0 before:-inset-x-3 before:-z-10 before:rounded-sm before:bg-surface-hover before:opacity-0 before:transition-opacity before:duration-300 before:content-[''] hover:before:opacity-100 has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-4 has-[a:focus-visible]:outline-accent sm:grid-cols-[3.5rem_1fr_auto]"
             >
               <span

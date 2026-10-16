@@ -111,7 +111,9 @@ third-party skill there too. `skills-lock.json` records where they came from.
   - subtle (fade or slide of about 12px, refined hover states)
   - always disabled under `prefers-reduced-motion`, hover transforms
     included (`motion-safe:hover:…`)
-  - list items stagger with `revealDelay(i)` from `src/lib/reveal.ts`
+  - items that enter the viewport together stagger with `revealDelay(i)`
+    from `src/lib/reveal.ts`; items that scroll in one by one (Projects,
+    Skills, Experience) don't, or later ones lag
   - content must stay visible without JavaScript
 - **Icons:** inline SVGs in `components/ui/Icon.tsx`. No icon fonts or CDNs.
 
