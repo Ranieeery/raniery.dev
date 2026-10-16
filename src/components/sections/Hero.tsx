@@ -36,7 +36,7 @@ export function Hero({ locale, dict }: HeroProps) {
           <div className="flex flex-wrap gap-3">
             <a
               href="#contact"
-              className="inline-flex h-12 items-center gap-2 rounded-full bg-accent-text px-6 text-sm font-medium text-on-accent transition-[background-color,transform] duration-200 hover:-translate-y-px hover:bg-accent-strong dark:bg-accent dark:hover:bg-accent-strong"
+              className="inline-flex h-12 items-center gap-2 rounded-full bg-accent-text px-6 text-sm font-medium text-on-accent transition-[background-color,transform] duration-200 motion-safe:hover:-translate-y-px hover:bg-accent-strong dark:bg-accent dark:hover:bg-accent-strong"
             >
               {t.ctaContact}
               <Icon name="arrowDown" size={16} />
@@ -44,7 +44,7 @@ export function Hero({ locale, dict }: HeroProps) {
             <a
               href={profile.cv[locale]}
               download
-              className="inline-flex h-12 items-center gap-2 rounded-full border border-line px-6 text-sm font-medium transition-[border-color,transform] duration-200 hover:-translate-y-px hover:border-fg"
+              className="inline-flex h-12 items-center gap-2 rounded-full border border-line px-6 text-sm font-medium transition-[border-color,transform] duration-200 motion-safe:hover:-translate-y-px hover:border-fg"
             >
               {dict.common.downloadCv}
               <Icon name="download" size={16} />
@@ -56,7 +56,7 @@ export function Hero({ locale, dict }: HeroProps) {
                     href={link.href}
                     newTabHint={dict.a11y.opensInNewTab}
                     title={link.label}
-                    className="inline-flex size-12 items-center justify-center rounded-full border border-line text-muted transition-[border-color,color,transform] duration-200 hover:-translate-y-px hover:border-fg hover:text-fg"
+                    className="inline-flex size-12 items-center justify-center rounded-full border border-line text-muted transition-[border-color,color,transform] duration-200 motion-safe:hover:-translate-y-px hover:border-fg hover:text-fg"
                   >
                     <Icon name={link.id} size={18} />
                     <span className="sr-only">{link.label}</span>

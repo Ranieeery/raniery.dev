@@ -1,6 +1,7 @@
 import { Section } from "@/components/ui/Section";
 import { skills } from "@/content/profile";
 import type { Dictionary } from "@/i18n/get-dictionary";
+import { revealDelay } from "@/lib/reveal";
 
 type SkillsProps = { dict: Dictionary; index: number };
 
@@ -10,8 +11,13 @@ export function Skills({ dict, index }: SkillsProps) {
   return (
     <Section id="skills" index={index} title={t.title}>
       <dl className="grid gap-x-10 gap-y-10 sm:grid-cols-2">
-        {skills.map((group) => (
-          <div key={group.id} data-reveal className="border-t border-line pt-5">
+        {skills.map((group, i) => (
+          <div
+            key={group.id}
+            data-reveal
+            style={revealDelay(i)}
+            className="border-t border-line pt-5"
+          >
             <dt className="font-mono text-xs tracking-wider text-subtle uppercase">
               {t.groups[group.id]}
             </dt>

@@ -110,7 +110,7 @@ export const en: Dictionary = {
       },
       chatbot: {
         summary:
-          "A Spring Bot application that implements an AI-powered customer service chatbot.",
+          "A Spring Boot application that implements an AI-powered customer service chatbot.",
       },
       habits: {
         name: "Habits Tracker",

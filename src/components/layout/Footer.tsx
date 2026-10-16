@@ -1,3 +1,4 @@
+import { CurrentYear } from "@/components/ui/CurrentYear";
 import { Icon } from "@/components/ui/Icon";
 import { Logo } from "@/components/ui/Logo";
 import { profile } from "@/content/profile";
@@ -6,7 +7,7 @@ import type { Dictionary } from "@/i18n/get-dictionary";
 type FooterProps = { dict: Dictionary };
 
 export function Footer({ dict }: FooterProps) {
-  const year = new Date().getFullYear();
+  const buildYear = new Date().getFullYear();
 
   return (
     <footer className="border-t border-line">
@@ -14,7 +15,8 @@ export function Footer({ dict }: FooterProps) {
         <div className="flex flex-col gap-2">
           <Logo variant="closing" className="text-fg opacity-80" />
           <p>
-            © {year} {profile.name}. {dict.footer.note}
+            © <CurrentYear fallback={buildYear} /> {profile.name}.{" "}
+            {dict.footer.note}
           </p>
         </div>
         <a

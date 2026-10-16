@@ -25,7 +25,7 @@ export function Contact({ locale, dict, index }: ContactProps) {
           <Icon
             name="arrowUpRight"
             size={28}
-            className="shrink-0 transition-transform duration-300 ease-out-soft group-hover:translate-x-1 group-hover:-translate-y-1"
+            className="shrink-0 transition-transform duration-300 ease-out-soft motion-safe:group-hover:translate-x-1 motion-safe:group-hover:-translate-y-1"
           />
           <span className="sr-only"> — {t.emailLabel}</span>
         </a>

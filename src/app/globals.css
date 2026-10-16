@@ -183,6 +183,13 @@
   animation-duration: 0.35s;
 }
 
+/* Crossfade between pages, e.g. when switching language. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
 /* Scroll reveal. Content stays visible without JS or with reduced motion. */
 @media (prefers-reduced-motion: no-preference) {
   .js [data-reveal] {

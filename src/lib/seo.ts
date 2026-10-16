@@ -106,11 +106,11 @@ export function personJsonLd(locale: Locale, dict: Dictionary) {
     jobTitle: dict.hero.role,
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Contagem",
-      addressRegion: "MG",
-      addressCountry: "BR",
+      addressLocality: profile.address.locality,
+      addressRegion: profile.address.region,
+      addressCountry: profile.address.country,
     },
     sameAs: profile.social.map((link) => link.href),
-    knowsLanguage: ["pt-BR", "en"],
+    knowsLanguage: locales.map((l) => htmlLang[l]),
   };
 }

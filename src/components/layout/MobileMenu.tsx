@@ -57,8 +57,11 @@ export function MobileMenu({ items, labels }: MobileMenuProps) {
       <nav
         id={panelId}
         aria-label={labels.nav}
-        hidden={!open}
-        className="absolute inset-x-0 top-full border-b border-line bg-bg"
+        className={`absolute inset-x-0 top-full border-b border-line bg-bg transition-[opacity,translate,visibility] duration-200 ease-out-soft motion-reduce:transition-none ${
+          open
+            ? "visible opacity-100"
+            : "invisible opacity-0 motion-safe:-translate-y-2"
+        }`}
       >
         <ul className="mx-auto flex max-w-6xl flex-col px-5 py-4 sm:px-8">
           {items.map((item) => (

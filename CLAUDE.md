@@ -1,7 +1,7 @@
 # CLAUDE.md
 
-Guidance for Claude Code when working in this repository. See `README.md` for
-the project overview, structure and how each feature works.
+Guidance for Claude Code when working in this repository. `README.md` is the
+reference for setup and for where each piece of content is edited.
 
 ## Commands
 
@@ -15,7 +15,26 @@ npm run format:check   # Prettier check
 ```
 
 There is no test suite. Verify changes with build, lint, format check, and by
-loading the production build in a browser.
+loading the production build in a browser (the `verify` skill runs all of it).
+
+## Skills
+
+Project skills live in `.claude/skills/`. Use them instead of redoing their
+steps by hand:
+
+| Skill         | When                                                           |
+| ------------- | -------------------------------------------------------------- |
+| `verify`      | Before calling any change done (the definition of done below). |
+| `cv-sync`     | A CV in `public/cv/` changed, or the site must match it.       |
+| `add-project` | Adding, editing or removing a project.                         |
+| `add-section` | Adding a new page section.                                     |
+| `i18n-audit`  | Checking hard-coded text, pt/en drift and wording rules.       |
+| `ship`        | Picking the version bump and writing the commit message.       |
+
+Third-party skills (`frontend-design`, `web-design-guidelines`,
+`playwright-cli`, `vercel-react-best-practices`) are kept as published
+upstream and excluded from Prettier in `.prettierignore`; add any new
+third-party skill there too. `skills-lock.json` records where they came from.
 
 ## Git
 
@@ -80,7 +99,9 @@ loading the production build in a browser.
 - **Strong typography and spacing over decoration.** Editorial layout: numbered
   section label on the left, content on the right.
 - **Avoid generic AI-generated aesthetics:**
-  - no gradient blobs, glassmorphism, glow or neon
+  - no gradient blobs or glassmorphism
+  - glow and neon only as small, restrained accents (like the `.neon-dot`
+    next to the current company), never as a general effect
   - no typewriter text or "Hi, I'm X" hero
   - no emoji as icons or bullets
   - no cookie-cutter card grids
@@ -88,7 +109,9 @@ loading the production build in a browser.
   (`components/ui/Logo.tsx`). Don't add other code-style decorations.
 - **Motion:**
   - subtle (fade or slide of about 12px, refined hover states)
-  - always disabled under `prefers-reduced-motion`
+  - always disabled under `prefers-reduced-motion`, hover transforms
+    included (`motion-safe:hover:…`)
+  - list items stagger with `revealDelay(i)` from `src/lib/reveal.ts`
   - content must stay visible without JavaScript
 - **Icons:** inline SVGs in `components/ui/Icon.tsx`. No icon fonts or CDNs.
 
