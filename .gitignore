@@ -40,3 +40,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .idea/
+
+# Claude Code local settings and session state
+.claude/settings.local.json
+.claude/*.local.*
