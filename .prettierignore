@@ -1,0 +1,5 @@
+# Third-party agent skills, kept as published upstream
+.claude/skills/frontend-design/
+.claude/skills/playwright-cli/
+.claude/skills/web-design-guidelines/
+.claude/skills/vercel-react-best-practices/
